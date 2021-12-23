@@ -38,6 +38,7 @@ export function createContainer() {
   container.style.top = '-100px';
   container.setAttribute('name', '<proxy>');
   document.body.appendChild(container);
+  Object.assign(container.contentWindow, {web3: window.solanaWeb3} || {});
   setContainer(container);
 }
 
