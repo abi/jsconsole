@@ -33,17 +33,13 @@ class Line extends Component {
 
     const { filter } = this.state;
 
-    if (type === 'command') {
-      line = (
-        <div className="prompt input">
-          <LineNav value={value} />
-          {value}
-        </div>
-      );
-    }
-
     if (type === 'log' || type === 'response') {
       if (type === 'log' && Array.isArray(value) && value.length === 0) {
+        return null;
+      }
+
+      // Skip non-error return values
+      if (type === 'response' && !error) {
         return null;
       }
 

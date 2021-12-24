@@ -15,18 +15,13 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.onRun = this.onRun.bind(this);
-    this.triggerFocus = this.triggerFocus.bind(this);
   }
 
   async onRun(command) {
     const console = this.console;
 
     if (command[0] !== ':') {
-      console.push({
-        type: 'command',
-        command,
-        value: command,
-      });
+      console.clear();
       const res = await run(command);
       console.push({
         command,
@@ -77,16 +72,8 @@ class App extends Component {
     if (query) {
       this.onRun(query);
     } else {
-      this.onRun(':welcome');
+      // this.onRun(':welcome');
     }
-  }
-
-  triggerFocus(e) {
-    if (e.target.nodeName === 'INPUT') return;
-    if (e.metaKey || e.ctrlKey || e.altKey) return;
-    if (e.code && !doStuffKeys.test(e.code)) return;
-
-    this.input.focus();
   }
 
   render() {
@@ -97,15 +84,9 @@ class App extends Component {
     return (
       <div
         tabIndex="-1"
-        onKeyDown={this.triggerFocus}
         ref={e => (this.app = e)}
         className={className}
       >
-        <Console
-          ref={e => (this.console = e)}
-          commands={commands}
-          reverse={layout === 'top'}
-        />
         <Input
           inputRef={e => (this.input = e)}
           onRun={this.onRun}
@@ -113,6 +94,11 @@ class App extends Component {
           onClear={() => {
             this.console.clear();
           }}
+        />
+        <Console
+          ref={e => (this.console = e)}
+          commands={commands}
+          reverse={layout === 'top'}
         />
       </div>
     );
