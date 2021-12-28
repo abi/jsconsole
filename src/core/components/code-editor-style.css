@@ -42,6 +42,10 @@
   outline: 0;
 }
 
+.jsconsole .Input .container__editor pre {
+  color: black !important;
+}
+
 /* Syntax highlighting */
 .jsconsole .token.comment,
 .jsconsole .token.prolog,

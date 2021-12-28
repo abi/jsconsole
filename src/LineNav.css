@@ -11,7 +11,7 @@
   bottom: .5rem;
 }
 
-.icon {
+.LineNav .icon {
   user-select: none;
   border: 0;
   background: none;
@@ -36,7 +36,7 @@
   z-index: 10;
 }
 
-.icon:hover {
+.LineNav .icon:hover {
   /*
   opacity: 0.99 =
     this is a hack because somehow `opacity: 1` sets the
@@ -48,23 +48,23 @@
   box-shadow: 0 0 4px 0px #2196F3;
 }
 
-.icon:active {
+.LineNav .icon:active {
   box-shadow: 0 0 0 1px #2196F3;
 }
 
-.icon.copy {
+.LineNav .icon.copy {
   background-image: svg-load('copy.svg');
 }
 
-.icon.link {
+.LineNav .icon.link {
   background-image: svg-load('link.svg');
 }
 
-.icon.search {
+.LineNav .icon.search {
   background-image: svg-load('search.svg');
 }
 
-.icon.expand {
+.LineNav .icon.expand {
   background-image: svg-load('expand.svg');
   padding: 0;
   background-color: transparent;
@@ -76,7 +76,7 @@
   width: 8px;
 }
 
-.icon.expand:hover {
+.LineNav .icon.expand:hover {
   background-color: transparent;
   box-shadow: none;
 }
