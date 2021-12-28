@@ -18,9 +18,12 @@ class Input extends Component {
       value: props.value || '',
       multiline: false,
       rows: 1,
+      isCopying: false,
+      isRunning: false,
     };
     this.onChange = this.onChange.bind(this);
     this.run = this.run.bind(this);
+    this.copy = this.copy.bind(this);
   }
 
   onChange(value) {
@@ -34,9 +37,31 @@ class Input extends Component {
 
   async run(e) {
     e.preventDefault();
+    let finished = false;
+    setTimeout(() => {
+      if (!finished) {
+        this.setState({isRunning: true});
+      }
+    }, 400);
     await this.props.onRun(this.state.value);
+    finished = true;
+    this.setState({isRunning: false});
     // Don't use `this.input.scrollIntoView();` as it messes with iframes
     window.scrollTo(0, document.body.scrollHeight);
+  }
+
+  async copy(e) {
+    e.preventDefault();
+    const text = this.state.value;
+    this.setState({isCopying: true});
+    setTimeout(() => {
+      this.setState({isCopying: false});
+    }, 800);
+    if ('clipboard' in navigator) {
+      return await navigator.clipboard.writeText(text);
+    } else {
+      return document.execCommand('copy', true, text);
+    }
   }
 
   render() {
@@ -52,10 +77,10 @@ class Input extends Component {
         />
         <div className="toolbar">
           <span onClick={this.run} className="toolbar__button">
-            <FontAwesomeIcon icon={faPlay} /> run
+            <FontAwesomeIcon icon={faPlay} /> {!this.state.isRunning ? 'run' : 'running...'}
           </span>
-          <span onClick={this.run} className="toolbar__button">
-            <FontAwesomeIcon icon={faCopy} /> copy
+          <span onClick={this.copy} className="toolbar__button">
+            <FontAwesomeIcon icon={faCopy} /> {!this.state.isCopying ? 'copy' : 'copied'}
           </span>
         </div>
       </div>
