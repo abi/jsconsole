@@ -9,23 +9,15 @@ import './code-editor-style.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay } from '@fortawesome/free-solid-svg-icons';
 
-const DEFAULT_CODE =
-`
-let connection = new web3.Connection(web3.clusterApiUrl("mainnet-beta"));
-let slot = await connection.getSlot();
-console.log(slot);
-`;
-
 class Input extends Component {
   constructor(props) {
     super(props);
 
     // history is set in the componentDidMount
     this.state = {
-      value: props.value || DEFAULT_CODE,
+      value: props.value || '',
       multiline: false,
       rows: 1,
-      historyCursor: props.history.length,
     };
     this.onChange = this.onChange.bind(this);
     this.run = this.run.bind(this);

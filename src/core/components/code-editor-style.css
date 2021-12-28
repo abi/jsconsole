@@ -1,8 +1,18 @@
+.App {
+  background-color: #ffffff;
+}
+
+.Input {
+  background-color: #fafafa;
+  padding-top: 10px;
+}
+
 .container__editor {
   font-family: "Fira code", "Fira Mono", monospace;
   font-size: 16px;
   font-variant-ligatures: common-ligatures;
   background-color: #fafafa;
+  color: black;
   border-radius: 3px;
 }
 

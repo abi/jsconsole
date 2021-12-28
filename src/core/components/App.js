@@ -3,10 +3,11 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 import Console from './Console';
-import Input from '../containers/Input';
+import Input from './Input';
 
 import run, { bindConsole, createContainer } from '../lib/run';
 import internalCommands from '../lib/internal-commands';
+import '../jsconsole.css';
 
 // this is lame, but it's a list of key.code that do stuff in the input that we _want_.
 const doStuffKeys = /^(Digit|Key|Num|Period|Semi|Comma|Slash|IntlBackslash|Backspace|Delete|Enter)/;
@@ -77,7 +78,7 @@ class App extends Component {
   }
 
   render() {
-    const { commands = [], theme, layout } = this.props;
+    const { commands = [], theme, layout, code } = this.props;
 
     const className = classnames(['App', `theme-${theme}`, layout]);
 
@@ -90,10 +91,10 @@ class App extends Component {
         <Input
           inputRef={e => (this.input = e)}
           onRun={this.onRun}
-          autoFocus={window.top === window}
           onClear={() => {
             this.console.clear();
           }}
+          value={code}
         />
         <Console
           ref={e => (this.console = e)}

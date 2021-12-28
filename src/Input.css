@@ -16,7 +16,7 @@
 }
 
 .Line .input:before {
-  background-image: url(/in.svg);
+  background-image: url(./in.svg);
 }
 
 .Input .cli,
