@@ -7,7 +7,7 @@ import 'prismjs/components/prism-javascript';
 import './code-editor-style.css';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlay } from '@fortawesome/free-solid-svg-icons';
+import { faCopy, faPlay } from '@fortawesome/free-solid-svg-icons';
 
 class Input extends Component {
   constructor(props) {
@@ -50,12 +50,14 @@ class Input extends Component {
           padding={10}
           className="container__editor"
         />
-        <span onClick={this.run} style={{
-          border: '2px solid black',
-          borderRadius: '8px', cursor: 'pointer', background: 'black',
-          color: 'white', display: 'inline-block', padding: 9}}>
-          <FontAwesomeIcon icon={faPlay} /> run
-        </span>
+        <div className="toolbar">
+          <span onClick={this.run} className="toolbar__button">
+            <FontAwesomeIcon icon={faPlay} /> run
+          </span>
+          <span onClick={this.run} className="toolbar__button">
+            <FontAwesomeIcon icon={faCopy} /> copy
+          </span>
+        </div>
       </div>
     );
   }

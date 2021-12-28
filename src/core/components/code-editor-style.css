@@ -1,17 +1,39 @@
 .App {
-  background-color: #ffffff;
+  background-color: #fafafa;
+  border: 1px solid #e1e1e1;
+  border-radius: 3px;
 }
 
 .Input {
-  background-color: #fafafa;
+  background-color: #ffffff;
   padding-top: 10px;
+}
+
+.toolbar {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row-reverse;
+  border: 1px solid #e1e1e1;
+  border-width: 1px 0px;
+}
+
+.toolbar__button {
+  border-left: 1px solid #e1e1e1;
+  color: #a7a7a7;
+  cursor: pointer;
+  display: inline-block;
+  padding: 9px;
+}
+
+.toolbar__button:hover {
+  color: #000;
 }
 
 .container__editor {
   font-family: "Fira code", "Fira Mono", monospace;
   font-size: 16px;
   font-variant-ligatures: common-ligatures;
-  background-color: #fafafa;
+  background-color: #ffffff;
   color: black;
   border-radius: 3px;
 }
