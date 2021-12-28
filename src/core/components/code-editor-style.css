@@ -1,15 +1,15 @@
-.App {
+.jsconsole.App {
   background-color: #fafafa;
   border: 1px solid #e1e1e1;
   border-radius: 3px;
 }
 
-.Input {
+.jsconsole .Input {
   background-color: #ffffff;
   padding-top: 10px;
 }
 
-.toolbar {
+.jsconsole .toolbar {
   background-color: #ffffff;
   display: flex;
   flex-direction: row-reverse;
@@ -17,7 +17,7 @@
   border-width: 1px 0px;
 }
 
-.toolbar__button {
+.jsconsole .toolbar__button {
   border-left: 1px solid #e1e1e1;
   color: #a7a7a7;
   cursor: pointer;
@@ -25,11 +25,11 @@
   padding: 9px;
 }
 
-.toolbar__button:hover {
+.jsconsole .toolbar__button:hover {
   color: #000;
 }
 
-.container__editor {
+.jsconsole .container__editor {
   font-family: "Fira code", "Fira Mono", monospace;
   font-size: 16px;
   font-variant-ligatures: common-ligatures;
@@ -38,67 +38,67 @@
   border-radius: 3px;
 }
 
-.container__editor textarea {
+.jsconsole .container__editor textarea {
   outline: 0;
 }
 
 /* Syntax highlighting */
-.token.comment,
-.token.prolog,
-.token.doctype,
-.token.cdata {
+.jsconsole .token.comment,
+.jsconsole .token.prolog,
+.jsconsole .token.doctype,
+.jsconsole .token.cdata {
   color: #90a4ae;
 }
-.token.punctuation {
+.jsconsole .token.punctuation {
   color: #9e9e9e;
 }
-.namespace {
+.jsconsole .namespace {
   opacity: 0.7;
 }
-.token.property,
-.token.tag,
-.token.boolean,
-.token.number,
-.token.constant,
-.token.symbol,
-.token.deleted {
+.jsconsole .token.property,
+.jsconsole .token.tag,
+.jsconsole .token.boolean,
+.jsconsole .token.number,
+.jsconsole .token.constant,
+.jsconsole .token.symbol,
+.jsconsole .token.deleted {
   color: #e91e63;
 }
-.token.selector,
-.token.attr-name,
-.token.string,
-.token.char,
-.token.builtin,
-.token.inserted {
+.jsconsole .token.selector,
+.jsconsole .token.attr-name,
+.jsconsole .token.string,
+.jsconsole .token.char,
+.jsconsole .token.builtin,
+.jsconsole .token.inserted {
   color: #4caf50;
 }
-.token.operator,
-.token.entity,
-.token.url,
-.language-css .token.string,
-.style .token.string {
+.jsconsole .token.operator,
+.jsconsole .token.entity,
+.jsconsole .token.url,
+.jsconsole .language-css .token.string,
+.jsconsole .style .token.string {
   color: #795548;
 }
-.token.atrule,
-.token.attr-value,
-.token.keyword {
+.jsconsole .token.atrule,
+.jsconsole .token.attr-value,
+.jsconsole .token.keyword {
   color: #3f51b5;
 }
-.token.function {
+.jsconsole .token.function {
   color: #f44336;
 }
-.token.regex,
-.token.important,
-.token.variable {
+.jsconsole .token.regex,
+.jsconsole .token.important,
+.jsconsole .token.variable {
   color: #ff9800;
 }
-.token.important,
-.token.bold {
+.jsconsole .token.important,
+.jsconsole .token.bold {
   font-weight: bold;
 }
-.token.italic {
+.jsconsole .token.italic {
   font-style: italic;
 }
-.token.entity {
+.jsconsole .token.entity {
   cursor: help;
 }

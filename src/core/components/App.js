@@ -80,7 +80,7 @@ class App extends Component {
   render() {
     const { commands = [], theme, layout, code } = this.props;
 
-    const className = classnames(['App', `theme-${theme}`, layout]);
+    const className = classnames(['App', 'jsconsole', `theme-${theme}`, layout]);
 
     return (
       <div
