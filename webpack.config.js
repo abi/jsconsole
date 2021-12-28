@@ -31,12 +31,11 @@ module.exports = {
             options: {
               importLoaders: 1,
             },
+          },
+          {
+            loader: 'postcss-loader'
           }
         ],
-      },
-      {
-        test: /\.svg$/,
-        loader: 'svg-inline-loader'
       }
     ]
   },
