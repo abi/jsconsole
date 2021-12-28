@@ -83,6 +83,7 @@ class Console extends Component {
   clear() {
     this.state = {}; // eslint-disable-line react/no-direct-mutation-state
     this.forceUpdate();
+    this.setState({});
   }
 
   error = (...rest) => {

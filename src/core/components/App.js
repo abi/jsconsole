@@ -70,11 +70,11 @@ class App extends Component {
     createContainer();
     bindConsole(this.console);
     const query = decodeURIComponent(window.location.search.substr(1));
-    if (query) {
-      this.onRun(query);
-    } else {
-      // this.onRun(':welcome');
-    }
+    // if (query) {
+    //   this.onRun(query);
+    // } else {
+    //   // this.onRun(':welcome');
+    // }
   }
 
   render() {
