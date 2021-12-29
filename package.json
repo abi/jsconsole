@@ -1,6 +1,6 @@
 {
-  "name": "@remy/jsconsole",
-  "version": "2.1.2",
+  "name": "@abi/jsconsole",
+  "version": "1.0.0",
   "engines": {
     "node": "16.x.x"
   },
