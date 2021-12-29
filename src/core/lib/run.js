@@ -3,6 +3,7 @@ import { parse } from 'babylon';
 import * as walk from 'babylon-walk';
 
 import copy from 'copy-to-clipboard';
+import { Metadata } from '@metaplex-foundation/mpl-token-metadata';
 
 let container = null;
 
@@ -38,7 +39,7 @@ export function createContainer() {
   container.style.top = '-100px';
   container.setAttribute('name', '<proxy>');
   document.body.appendChild(container);
-  Object.assign(container.contentWindow, {web3: window.solanaWeb3} || {});
+  Object.assign(container.contentWindow, {web3: window.solanaWeb3, Metadata} || {});
   setContainer(container);
 }
 
