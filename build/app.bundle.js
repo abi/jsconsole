@@ -35840,7 +35840,9 @@ async function run(command) {
 function preProcess(content) {
   var wrapped = '(async () => {' + content + '})()';
   var root = (0,babylon__WEBPACK_IMPORTED_MODULE_0__.parse)(wrapped, {
-    ecmaVersion: 8
+    ecmaVersion: 8,
+    sourceType: 'module',
+    allowImportExportEverywhere: true
   });
   var body = root.program.body[0].expression.callee.body;
   var changes = [];
@@ -35866,6 +35868,14 @@ function preProcess(content) {
 
     AwaitExpression(node) {
       containsAwait = true;
+    },
+
+    ImportDeclaration(node) {
+      changes.push({
+        text: '',
+        start: node.start,
+        end: node.end
+      });
     },
 
     ReturnStatement(node) {

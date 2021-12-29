@@ -116,7 +116,8 @@ export default async function run(command) {
 
 export function preProcess(content) {
   var wrapped = '(async () => {' + content + '})()';
-  var root = parse(wrapped, { ecmaVersion: 8 });
+  var root = parse(wrapped,
+    { ecmaVersion: 8, sourceType: 'module', allowImportExportEverywhere: true });
   var body = root.program.body[0].expression.callee.body;
 
   var changes = [];
@@ -142,6 +143,13 @@ export function preProcess(content) {
     },
     AwaitExpression(node) {
       containsAwait = true;
+    },
+    ImportDeclaration(node) {
+      changes.push({
+        text: '',
+        start: node.start,
+        end: node.end,
+      });
     },
     ReturnStatement(node) {
       containsReturn = true;
