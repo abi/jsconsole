@@ -1,10 +1,11 @@
 /*global document window */
 import { parse } from 'babylon';
 import * as walk from 'babylon-walk';
-
 import copy from 'copy-to-clipboard';
+
 import { Metadata } from '@metaplex-foundation/mpl-token-metadata';
 import axios from 'axios';
+import * as web3 from '@solana/web3.js';
 
 let container = null;
 
@@ -40,7 +41,7 @@ export function createContainer() {
   container.style.top = '-100px';
   container.setAttribute('name', '<proxy>');
   document.body.appendChild(container);
-  Object.assign(container.contentWindow, {web3: window.solanaWeb3, Metadata, axios} || {});
+  Object.assign(container.contentWindow, {web3, Metadata, axios} || {});
   setContainer(container);
 }
 
