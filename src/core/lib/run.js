@@ -9,7 +9,7 @@ import * as web3 from '@solana/web3.js';
 
 let container = null;
 
-export const bindConsole = __console => {
+export const bindConsole = (__console, container) => {
   // supported methods
   const apply = [
     'log',
@@ -43,6 +43,7 @@ export function createContainer() {
   document.body.appendChild(container);
   Object.assign(container.contentWindow, {web3, Metadata, axios} || {});
   setContainer(container);
+  return container;
 }
 
 export function setContainer(iframe) {
@@ -55,7 +56,7 @@ export function setContainer(iframe) {
   win.$ = s => doc.querySelector(s);
 }
 
-export default async function run(command) {
+export default async function run(container, command) {
   return new Promise(async resolve => {
     const res = {
       error: false,

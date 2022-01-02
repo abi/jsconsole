@@ -82991,7 +82991,7 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0__.Component {
 
     if (command[0] !== ':') {
       console.clear();
-      const res = await (0,_lib_run__WEBPACK_IMPORTED_MODULE_4__["default"])(command);
+      const res = await (0,_lib_run__WEBPACK_IMPORTED_MODULE_4__["default"])(this.state.container, command);
       console.push({
         command,
         type: 'response',
@@ -83041,9 +83041,12 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0__.Component {
   }
 
   componentDidMount() {
-    (0,_lib_run__WEBPACK_IMPORTED_MODULE_4__.createContainer)();
-    (0,_lib_run__WEBPACK_IMPORTED_MODULE_4__.bindConsole)(this.console);
-    const query = decodeURIComponent(window.location.search.substr(1)); // if (query) {
+    const container = (0,_lib_run__WEBPACK_IMPORTED_MODULE_4__.createContainer)();
+    this.setState({
+      container
+    });
+    (0,_lib_run__WEBPACK_IMPORTED_MODULE_4__.bindConsole)(this.console, container); //const query = decodeURIComponent(window.location.search.substr(1));
+    // if (query) {
     //   this.onRun(query);
     // } else {
     //   // this.onRun(':welcome');
@@ -85059,7 +85062,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let container = null;
-const bindConsole = __console => {
+const bindConsole = (__console, container) => {
   // supported methods
   const apply = ['log', 'error', 'dir', 'info', 'warn', 'assert', 'debug', 'clear'];
   apply.forEach(method => {
@@ -85086,6 +85089,7 @@ function createContainer() {
     axios: (axios__WEBPACK_IMPORTED_MODULE_4___default())
   } || {});
   setContainer(container);
+  return container;
 }
 function setContainer(iframe) {
   container = iframe;
@@ -85097,7 +85101,7 @@ function setContainer(iframe) {
 
   win.$ = s => doc.querySelector(s);
 }
-async function run(command) {
+async function run(container, command) {
   return new Promise(async resolve => {
     const res = {
       error: false,

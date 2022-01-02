@@ -23,7 +23,7 @@ class App extends Component {
 
     if (command[0] !== ':') {
       console.clear();
-      const res = await run(command);
+      const res = await run(this.state.container, command);
       console.push({
         command,
         type: 'response',
@@ -67,9 +67,10 @@ class App extends Component {
   }
 
   componentDidMount() {
-    createContainer();
-    bindConsole(this.console);
-    const query = decodeURIComponent(window.location.search.substr(1));
+    const container = createContainer();
+    this.setState({ container });
+    bindConsole(this.console, container);
+    //const query = decodeURIComponent(window.location.search.substr(1));
     // if (query) {
     //   this.onRun(query);
     // } else {
